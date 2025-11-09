@@ -26,14 +26,14 @@ async def main() -> None:
         system_message="You are an editor, provide critical feedback. Respond with 'APPROVE' if the text addresses all feedbacks.",
     )
     inner_termination = TextMentionTermination("APPROVE")
-    inner_team = RoundRobinGroupChat([agent1, agent2], termination_condition=inner_termination)
+    team = RoundRobinGroupChat([agent1, agent2], termination_condition=inner_termination)
 
-    society_of_mind_agent = SocietyOfMindAgent("society_of_mind", team=inner_team, model_client=client)
+    # society_of_mind_agent = SocietyOfMindAgent("society_of_mind", team=inner_team, model_client=client)
 
-    agent3 = AssistantAgent(
-        "assistant3", model_client=client, system_message="Translate the text to Spanish."
-    )
-    team = RoundRobinGroupChat([society_of_mind_agent, agent3], max_turns=2)
+    # agent3 = AssistantAgent(
+    #     "assistant3", model_client=client, system_message="Translate the text to Spanish."
+    # )
+    # team = RoundRobinGroupChat([society_of_mind_agent, agent3], max_turns=2)
 
     stream = team.run_stream(task="Write a short story with a surprising ending.")
     await Console(stream)
