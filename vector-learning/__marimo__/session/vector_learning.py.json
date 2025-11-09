@@ -1,0 +1,178 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.17.7"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "21cc54b4ba62f36ff1a693e3913c9b18",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"learning-vector-databases-chromadb\">Learning Vector databases: ChromaDB</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "4fe929abcc5863e166a20d60aeb87d58",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "92d7f99492dde613ca625aa9a1b40fdd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Loaded 50 documents\nCategories: ['comp.graphics', 'comp.sys.mac.hardware']\nSample: :  \n: well, i have lots of experience with scanning in images and altering\n: them.  as for changing them back into negatives, is that really possible?\n\n: (stuff deleted)\n\n: jennifer urso:  the oh-so b...\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "44ad8e44e2e9fc5981b202a0cc85b696",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Cleaned 48 documents\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "45face9b869ac6e61ef472255bdbadfa",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "C:\\develop\\open-source\\AILabs\\vector-learning\\.venv\\Lib\\site-packages\\huggingface_hub\\file_download.py:143: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\\Users\\jbao6\\.cache\\huggingface\\hub\\models--sentence-transformers--paraphrase-MiniLM-L3-v2. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.\nTo support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development\n  warnings.warn(message)\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Generated 48 embeddings of dimension 384\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "PKri",
+      "code_hash": "f7c9a017933032ef4447980caa9ef972",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Added 48 documents to ChromaDB\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "Xref",
+      "code_hash": "392a53c646362bd639434c36962295e3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "ChromaDB Storage Exploration\n\nCollection Info:\nName: newsgroups\nCount: 48\nID: aea80f37-5e76-408f-8409-1ed53e6597d2\n\nSample Documents:\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "\n1. ID: doc_0\nCategory: comp.graphics\nDoc length: 593 chars\nEmbedding: 384 dims, first 5: [ 0.09469082  0.02419082 -0.05907555  0.21226275 -0.10876127]\nText: : : well, i have lots of experience with scanning in images and altering : them. as for changing the...\n\n2. ID: doc_1\nCategory: comp.graphics\nDoc length: 71 chars\nEmbedding: 384 dims, first 5: [-0.14978281 -0.08802146 -0.03034562  0.18902592 -0.05083283]\nText: Or just use the URT tool: rastorle. Yes, both it and the newer xli can....\n\nFiles on disk:\n./chroma_db\\chroma.sqlite3 (643,072 bytes)\n./chroma_db\\f845c66e-1cc9-417c-ac6b-858cf75624b0\\data_level0.bin (167,600 bytes)\n./chroma_db\\f845c66e-1cc9-417c-ac6b-858cf75624b0\\header.bin (100 bytes)\n./chroma_db\\f845c66e-1cc9-417c-ac6b-858cf75624b0\\length.bin (400 bytes)\n./chroma_db\\f845c66e-1cc9-417c-ac6b-858cf75624b0\\link_lists.bin (0 bytes)\n\nSQLite tables in chroma.sqlite3:\n- migrations\n- acquire_write\n- collection_metadata\n- segment_metadata\n- tenants\n- databases\n- collections\n- maintenance_log\n- segments\n- embeddings\n- embedding_metadata\n- max_seq_id\n- embedding_fulltext_search\n- embedding_fulltext_search_data\n- embedding_fulltext_search_idx\n- embedding_fulltext_search_content\n- embedding_fulltext_search_docsize\n- embedding_fulltext_search_config\n- embeddings_queue\n- embeddings_queue_config\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "\nSample from collections table:\n('aea80f37-5e76-408f-8409-1ed53e6597d2', 'newsgroups', 384, '00000000-0000-0000-0000-000000000000', '{}', '{\"defaults\":{\"string\":{\"fts_index\":{\"enabled\":false,\"config\":{}},\"string_inverted_index\":{\"enabled\":true,\"config\":{}}},\"float_list\":{\"vector_index\":{\"enabled\":false,\"config\":{\"space\":\"l2\",\"embedding_function\":{\"type\":\"known\",\"name\":\"default\",\"config\":{}},\"source_key\":\"#document\",\"hnsw\":{\"ef_construction\":100,\"max_neighbors\":16,\"ef_search\":100,\"num_threads\":16,\"batch_size\":100,\"sync_threshold\":1000,\"resize_factor\":1.2}}}},\"sparse_vector\":{\"sparse_vector_index\":{\"enabled\":false,\"config\":{\"embedding_function\":{\"type\":\"unknown\"},\"bm25\":false}}},\"int\":{\"int_inverted_index\":{\"enabled\":true,\"config\":{}}},\"float\":{\"float_inverted_index\":{\"enabled\":true,\"config\":{}}},\"bool\":{\"bool_inverted_index\":{\"enabled\":true,\"config\":{}}}},\"keys\":{\"category\":{\"string\":{\"fts_index\":{\"enabled\":false,\"config\":{}},\"string_inverted_index\":{\"enabled\":true,\"config\":{}}}},\"length\":{\"int\":{\"int_inverted_index\":{\"enabled\":true,\"config\":{}}}},\"doc_id\":{\"int\":{\"int_inverted_index\":{\"enabled\":true,\"config\":{}}}},\"#embedding\":{\"float_list\":{\"vector_index\":{\"enabled\":true,\"config\":{\"space\":\"l2\",\"embedding_function\":{\"type\":\"known\",\"name\":\"default\",\"config\":{}},\"source_key\":\"#document\",\"hnsw\":{\"ef_construction\":100,\"max_neighbors\":16,\"ef_search\":100,\"num_threads\":16,\"batch_size\":100,\"sync_threshold\":1000,\"resize_factor\":1.2}}}}},\"#document\":{\"string\":{\"fts_index\":{\"enabled\":true,\"config\":{}},\"string_inverted_index\":{\"enabled\":false,\"config\":{}}}}}}')\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "048756a78ecbc9f9cf9fc583a7af14f9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"ids\": [[\"doc_20\", \"doc_13\", \"doc_32\"]], \"embeddings\": null, \"documents\": [[\"The Toshiba has a 200ms access time, the NEC has a 280ms access time, right around the Sony/Apple. Access time is, of course, somewhat important, but not as vital in the case of CDs as data transfer rate. All the drives are double-speed drives with maximum data transfer rates of 300K/second. Any is a good choice. Apple's is very cheap when included with new Macs and I agree with Christian's comment about drivers. Plus, Apple's is bootable on the Centris and Quadra 800. A very nice feature if you need to install System software. I don't know if the NEC or Toshiba are bootable on those machines.\", \"I have no experience with this particular hardware, but just about every month in Macworld there is an add for an combined SE accelerator/Video board. This item sells for about $1000 and comes with a 25MHz 68030/68882 pair, eight SIMM slots, and a grayscale 21\\\" monitor. This accelerator plugs into the SE's lone expansion port and thus no soldering. You will however, need a long TORX wrench to get the case open (but that's not really a big deal). Does that sound like what you were looking for?\", \"From the benchmarks I've seen (was that in MacUser or MacWeek?) the FPU-less Centris 610 is _faster_ at floating-point operations (the kind of calculations that get routed to an FPU) than a Mac IIfx! And a Mac IIfx (68030 @ 40MHz + FPU) is _the_ fastest 030-based Mac. Take note, of course, that benchmarks never tell the whole story... Get your favorite program(s) and run them on both machines at the store. They should let you do that before you plunk down a hefty amount... Virtually, Philippe\"]], \"uris\": null, \"included\": [\"documents\", \"metadatas\", \"distances\"], \"data\": null, \"metadatas\": [[{\"doc_id\": 21, \"length\": 600, \"category\": \"comp.sys.mac.hardware\"}, {\"doc_id\": 14, \"length\": 497, \"category\": \"comp.sys.mac.hardware\"}, {\"doc_id\": 34, \"length\": 497, \"category\": \"comp.sys.mac.hardware\"}]], \"distances\": [[\"text/plain+float:30.999406814575195\", \"text/plain+float:31.51679039001465\", \"text/plain+float:32.38039779663086\"]]}"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Query: 'How do I improve graphics performance?'\n1. [comp.graphics] (Score: 0.047)\n   Does anybody know if there are any good 2d-graphics packages available for IBM RS/6000 & AIX ? I'm looking for something like DEC's GKS or Hewlett-Pac...\n\n2. [comp.graphics] (Score: 0.044)\n   Well, I dived in feet first and reverse engineered the .PRJ file as much as I needed to - extracted the mapping icon information - which is when it da...\n\n3. [comp.graphics] (Score: 0.043)\n   OK, with all the discussion about observed playback speeds with QuickTime, the effects of scaling and so on, I thought I'd do some more tests. First o...\n\nQuery: 'Mac hardware recommendations'\n1. [comp.sys.mac.hardware] (Score: 0.031)\n   The Toshiba has a 200ms access time, the NEC has a 280ms access time, right around the Sony/Apple. Access time is, of course, somewhat important, but ...\n\n2. [comp.sys.mac.hardware] (Score: 0.031)\n   I have no experience with this particular hardware, but just about every month in Macworld there is an add for an combined SE accelerator/Video board....\n\n3. [comp.sys.mac.hardware] (Score: 0.030)\n   From the benchmarks I've seen (was that in MacUser or MacWeek?) the FPU-less Centris 610 is _faster_ at floating-point operations (the kind of calcula...\n\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    }
+  ]
+}
