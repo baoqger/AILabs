@@ -16,6 +16,8 @@ credential = os.getenv("AZURE_INFERENCE_CREDENTIAL")
 model_deployment = os.getenv("MODEL_DEPLOYMENT_NAME")
 version = os.getenv("API_VERSION")
 
+
+
 model = AzureAIChatCompletionsModel(
     endpoint=endpoint,
     credential=credential,
@@ -68,7 +70,7 @@ agent = create_agent(
     system_prompt=SYSTEM_PROMPT,
     tools=[get_user_location, get_weather_for_location],
     context_schema=Context,
-    # response_format=ToolStrategy(ResponseFormat),
+    response_format=ToolStrategy(ResponseFormat),
     checkpointer=checkpointer
 )
 

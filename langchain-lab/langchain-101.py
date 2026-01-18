@@ -12,11 +12,14 @@ endpoint= os.getenv("AZURE_INFERENCE_ENDPOINT")
 credential = os.getenv("AZURE_INFERENCE_CREDENTIAL")
 model_deployment = os.getenv("MODEL_DEPLOYMENT_NAME")
 
+
 model = AzureAIChatCompletionsModel(
     endpoint=endpoint,
     credential=credential,
     model=model_deployment,
 )
+
+
 
 @tool
 def get_weather(city: str) -> str:
