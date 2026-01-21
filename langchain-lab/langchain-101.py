@@ -1,41 +1,47 @@
-# pip install -qU langchain "langchain[anthropic]"
-from langchain.agents import create_agent
-from langchain_azure_ai.chat_models import AzureAIChatCompletionsModel
-import os
+from langchain_openai import AzureChatOpenAI
+from langchain_openai.embeddings import AzureOpenAIEmbeddings
+from langchain_core.vectorstores import InMemoryVectorStore
 from dotenv import load_dotenv
-from langchain.tools import tool
-
-# Load environment variables from .env
+import os
 load_dotenv()
 
-endpoint= os.getenv("AZURE_INFERENCE_ENDPOINT")
-credential = os.getenv("AZURE_INFERENCE_CREDENTIAL")
-model_deployment = os.getenv("MODEL_DEPLOYMENT_NAME")
-
-
-model = AzureAIChatCompletionsModel(
-    endpoint=endpoint,
-    credential=credential,
-    model=model_deployment,
+# test llm in langchain
+llm = AzureChatOpenAI(
+    azure_deployment=os.getenv("AZURE_OPENAI_MODEL"),  # or your deployment
+    temperature=0,
+    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+    api_key=os.getenv("AZURE_OPENAI_API_KEY")
 )
 
+messages = [
+    (
+        "system",
+        "You are a helpful assistant that translates English to French. Translate the user sentence.",
+    ),
+    ("human", "I love programming."),
+]
+ai_msg = llm.invoke(messages)
+print(ai_msg.content)
 
-
-@tool
-def get_weather(city: str) -> str:
-    """Get weather for a given city."""
-    return f"It's always sunny in {city}!"
-
-agent = create_agent(
-    model=model,
-    tools=[get_weather],
-    system_prompt="You are a helpful assistant",
+# test embeddings in lanachain
+embeddings = AzureOpenAIEmbeddings(
+    model=os.getenv("AZURE_OPENAI_EMBEDDING_MODEL"),
+    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+    api_key=os.getenv("AZURE_OPENAI_API_KEY")    
 )
 
-# Run the agent
+text = "LangChain is the framework for building context-aware reasoning applications"
 
-result = agent.invoke(
-    {"messages": [{"role": "user", "content": "what is the weather in sf"}]}
+vectorstore = InMemoryVectorStore.from_texts(
+    [text],
+    embedding=embeddings,
 )
 
-print(result)
+# Use the vectorstore as a retriever
+retriever = vectorstore.as_retriever()
+
+# Retrieve the most similar text
+retrieved_documents = retriever.invoke("What is LangChain?")
+
+# show the retrieved document's content
+print(retrieved_documents[0].page_content)
