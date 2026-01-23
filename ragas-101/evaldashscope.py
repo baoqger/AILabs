@@ -17,19 +17,15 @@ dashscope.api_key = os.getenv("DASHSCOPE_API_KEY")
 def eval_dashscope():
     data_samples = {
         'question': [
-            '张伟是哪个部门的？',
-            '张伟是哪个部门的？',
-            '张伟是哪个部门的？'
+            "What is depth match? Please directly answer the question do not show any reference",
         ],
         'answer': [
-            '根据提供的信息，没有提到张伟所在的部门。如果您能提供更多关于张伟的信息，我可能能够帮助您找到答案。',
-            '张伟是人事部门的',
-            '张伟是教研部的'
+            "Depth matching is the process of aligning two well logs by adjusting the depths of one log (the target) so that its measured features correspond to those of the other log (the reference). "
+,
         ],
         'ground_truth':[
-            '张伟是教研部的成员',
-            '张伟是教研部的成员',
-            '张伟是教研部的成员'
+            "Depth matching is the process of aligning two well logs by adjusting the depths of one log (the target) so that its measured features correspond to those of the other log (the reference). "
+,
         ]
     }
 

@@ -17,7 +17,7 @@ llm = AzureOpenAI(
     temperature=0.0,
     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
     api_key=os.getenv("AZURE_OPENAI_API_KEY"),
-    api_version=os.getenv("OPENAI_API_VERSION"),
+    #api_version=os.getenv("OPENAI_API_VERSION"),
 )
 
 embed_model = AzureOpenAIEmbedding(
