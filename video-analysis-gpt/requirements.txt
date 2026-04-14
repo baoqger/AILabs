@@ -1,0 +1,5 @@
+opencv-python==4.10.0.84
+python-dotenv==1.0.0
+openai==2.8.1
+streamlit==1.38.0
+yt_dlp==2024.8.6
