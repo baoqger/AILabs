@@ -7,6 +7,7 @@ load_dotenv(override=True)
 
 endpoint = os.environ["AZURE_OPENAI_ENDPOINT"]
 subscription_key = os.environ["AZURE_OPENAI_API_KEY"]
+model = os.environ["AZURE_OPENAI_DEPLOYMENT_NAME"]
 
 # Your Foundry resource endpoint (same as curl)
 ENDPOINT = endpoint
@@ -19,7 +20,7 @@ payload = {
     "width": 1024,
     "height": 1024,
     "n": 1,
-    "model": "FLUX.2-pro",
+    "model": model,
 }
 
 headers = {
