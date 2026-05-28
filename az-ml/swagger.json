@@ -49,7 +49,7 @@
     "/score": {
       "post": {
         "operationId": "RunMLService",
-        "description": "Run web service's model and get the prediction output",
+        "description": "Predict the likelihood of diabetes based on a scikit-learn model deployed in Azure Machine Learning.",
         "security": [
           {
             "Bearer": []

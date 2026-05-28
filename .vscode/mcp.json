@@ -1,0 +1,9 @@
+{
+	"servers": {
+		"diabetes-prediction-mcp": {
+			"url": "https://demo-ai-gateway-chris.azure-api.net/diabetes-prediction-mcp/mcp",
+			"type": "http"
+		}
+	},
+	"inputs": []
+}
