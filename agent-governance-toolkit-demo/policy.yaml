@@ -1,0 +1,21 @@
+apiVersion: governance.toolkit/v1
+name: agent-safety
+default_action: allow
+rules:
+  - name: block-dangerous-tools
+    condition: "action.type in ['delete_file', 'shell_exec', 'drop_table']"
+    action: deny
+    description: "Destructive operations are blocked"
+    priority: 100
+
+  - name: block-pii
+    condition: "input_text matches '\\b\\d{3}-\\d{2}-\\d{4}\\b'"
+    action: deny
+    description: "SSN pattern detected"
+    priority: 90
+
+  - name: approve-sends
+    condition: "action.type == 'send_email'"
+    action: require_approval
+    approvers: ["security-team"]
+    priority: 50
